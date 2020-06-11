@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             mc:Ignorable="d"
+             x:Class="BedayzMobil.Views.Anasayfa">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout BackgroundColor="Black">
+                    <!--Searchbar-->
+                    <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Margin="5">
+                        <Frame CornerRadius="10" IsClippedToBounds="True" Padding="0" Margin="5">
+                            <SearchBar Placeholder="Ürün Ara" BackgroundColor="White"  />
+                        </Frame>
+                    </Frame>
+                    <!--Carousel-->
+                    <StackLayout  BackgroundColor="{StaticResource NavigationPrimary}"   HeightRequest="250" Padding="5">
+                        <CarouselView x:Name="FırsatÜrünleriCarousel" BackgroundColor="{StaticResource NavigationPrimary}"   >
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame CornerRadius="10" IsClippedToBounds="True"   Padding="0" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+                                            <ImageButton Source="{Binding .}" BackgroundColor="{StaticResource NavigationPrimary}"  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand" />
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Öne Çıkan Ürünler" Margin="5"/>
+                    <flv:FlowListView FlowColumnCount="2"
+                                  SeparatorVisibility="Default"
+                                  HasUnevenRows="True"
+                                  FlowItemTapped="ÜrünTapped"
+                                  FlowItemsSource="{Binding Items}"
+                                      x:Name="ÖneÇıkanÜrünlerFLV"
+                                      >
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" Margin="5">
+                                    <StackLayout>
+                                        <Image Source="{Binding ImageSource}"/>
+                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding Ürünİsmi}"/>
+                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünDetayı}"/>
+                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünFiyatı}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </flv:FlowListView.FlowColumnTemplate>
+                    </flv:FlowListView>
+                </StackLayout>
+
+                <!--"<ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal"
+                             BindableLayout.ItemsSource="{Binding Items}">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding ItemTappedComand}"
+                            NumberOfTapsRequired="1"/>
+                    </StackLayout.GestureRecognizers>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" Margin="5">
+                                <StackLayout>
+                                    <Image Source="{Binding ImageSource}"/>
+                                    <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding Ürünİsmi}"/>
+                                    <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünDetayı}"/>
+                                    <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünFiyatı}"/>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                    
+                </StackLayout>
+                
+            </ScrollView>"-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
