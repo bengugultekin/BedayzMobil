@@ -35,10 +35,10 @@ namespace BedayzMobil.Views
             
         }
 
-        private void ÜrünTapped(object sender, ItemTappedEventArgs e)
+        private async void ÜrünTapped(object sender, ItemTappedEventArgs e)
         {
-            /*var content = e.Item as ÜrünItem;
-            await Navigation.PushAsync(new ÜrünSayfasi(content));*/
+            var content = e.Item as ÜrünItem;
+            await Navigation.PushAsync(new ÜrünSayfasi(content));
         }
     }
     

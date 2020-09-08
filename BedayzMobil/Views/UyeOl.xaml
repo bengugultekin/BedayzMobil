@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Yeni Üyelik"
+             x:Class="BedayzMobil.Views.UyeOl">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" >
+                <Entry BackgroundColor="#F5F5F5"  Placeholder="AD" x:Name="NameLBL" Margin="-20,5" WidthRequest="190" HorizontalOptions="CenterAndExpand" />
+                <Entry BackgroundColor="#F5F5F5"  Placeholder="SOYAD" x:Name="LastNameLBL" Margin="-20,5" WidthRequest="200" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+            <Entry BackgroundColor="#F5F5F5"  Placeholder="E-POSTA" x:Name="EmailLBL" Margin="5,5" />
+            <Entry BackgroundColor="#F5F5F5"  Placeholder="ŞİFRE" IsPassword="True" x:Name="PasswordLBL" Margin="5,5" />
+            <Entry BackgroundColor="#F5F5F5"  Placeholder="Kullanıcı Adı"  Margin="5,5" x:Name="UserNameLBL" />
+            <Entry BackgroundColor="#F5F5F5"  Placeholder="CEP TELEFONU" x:Name="TelNoLBL"   Margin="5,5" />
+
+            <Label x:Name="Mesaj" TextColor="Black"/>
+            <Button BackgroundColor="#2199E8" Text="Üye Ol" Clicked="KayitOl_Clicked" TextColor="White" x:Name="KayitOl" CornerRadius="15" 
+                    HorizontalOptions="CenterAndExpand" WidthRequest="350" Margin="0,15,0,0" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,11 +6,20 @@
              mc:Ignorable="d"
              x:Class="BedayzMobil.Views.MenuPage"
              Title="Menu">
-             
+
+    
     <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout x:Name="GirisSL" BackgroundColor="#4A0E70" Orientation="Horizontal" >
+            <Image Source="UyeGirisi.png" HeightRequest="30" Margin="10,0,0,0"/>
+            <Button x:Name="ÜyeOlButton" Text="Üye Girişi" TextColor="White" Clicked="ÜyeOlButton_Clicked" BackgroundColor="#4A0E70" Margin="-10,0,0,0"/>
+        </StackLayout>
+        <StackLayout x:Name="HesabımSL" BackgroundColor="#4A0E70" Orientation="Horizontal">
+            <Image Source="UyeGirisi.png" HeightRequest="30" Margin="10,0,0,0"/>
+            <Button x:Name="Hesabım" Text="Hesabım" TextColor="White" Clicked="Hesabım_Clicked" BackgroundColor="#4A0E70" Margin="-10,0,0,0"/>
+        </StackLayout>
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True">
-            <d:ListView.ItemsSource>
+            <d:ListView.ItemsSource> 
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Item 1</x:String>
                     <x:String>Item 2</x:String>

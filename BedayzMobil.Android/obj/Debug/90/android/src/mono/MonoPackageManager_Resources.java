@@ -8,6 +8,8 @@ public class MonoPackageManager_Resources {
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.Bson.dll",
 		"Newtonsoft.Json.dll",
+		"Plugin.Settings.Abstractions.dll",
+		"Plugin.Settings.dll",
 		"System.Net.Http.Formatting.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
 		"Xamarin.Android.Arch.Core.Runtime.dll",

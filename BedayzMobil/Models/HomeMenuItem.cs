@@ -8,7 +8,15 @@ namespace BedayzMobil.Models
     {
         Browse,
         About,
-        Hoodie
+        Hoodie,
+        ÜyeGirisi,
+        Hesabım,
+        ÜyelikBilgileri,
+        Siparişler,
+        ŞifreDeğiştirme,
+        ÇıkışYap,
+        Sepet,
+        Diğer
     }
     public class HomeMenuItem
     {

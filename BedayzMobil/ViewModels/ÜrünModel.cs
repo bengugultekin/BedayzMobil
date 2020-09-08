@@ -1,125 +1,126 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
 using System.Collections.ObjectModel;
-using BedayzMobil.Models;
+using System.Linq;
 using BedayzMobil.Data;
+using BedayzMobil.Models;
+using BedayzMobil.Services;
+using BedayzMobil.Views;
+using Xamarin.Forms;
+using static BedayzMobil.Services.RestAPIForProducts;
+
 
 namespace BedayzMobil.ViewModels
 {
     public class ÜrünModel : BindableObject
     {
         private Page Page;
-
-        RestAPI RestAPI;
-
+        List<Product> Products = new List<Product>();
+        RestAPIForProducts RestAPI;
         public ÜrünModel(Page mainPage)
         {
             this.Page = mainPage;
-            RestAPI = new RestAPI();
-            //AddItems();
+            RestAPI = new RestAPIForProducts();
+            Products = GetAllItems();
         }
-
-       /* private void AddItems()
+        public Product FindÜrünItemWithName(string Name)
         {
-            for (int i = 0; i < 20; i++)
+            Product Ürün = new Product();
+            foreach (var item in Products)
             {
-                ÜrünItem ürünItem = new ÜrünItem()
+                if (Name == item.Name)
                 {
-                    ImageSource = "https://www.bedayz.com/Uploads/UrunResimleri/thumb/red-munchies-oversize-t-shirt-d1b2.jpg",
-                    Ürünİsmi = string.Format("Ürünİsmi {0}", i),
-                    ÜrünDetayı = string.Format("ÜrünDetayı {0}", i),
-                    ÜrünFiyatı = string.Format("ÜrünFiyatı {0}", i)
-                };
-                Items.Add(ürünItem);
-            }
-            
-        }*/
-       public ÜrünItem FindÜrünItemWithName(string Name)
-        {
-            ÜrünItem ürünItem = new ÜrünItem();
-            foreach (var Item in RestAPI.GetProducts())
-            {
-                if (Name == Item.Name)
-                    ürünItem = new ÜrünItem()
-                    {
-                        ImageSource = Item.ImageUrl,
-                        Ürünİsmi = Item.Name,
-                        ÜrünDetayı = Item.Info,
-                        ÜrünFiyatı = Item.Cost.ToString()
-                    };
-                break;
-            }
-            return ürünItem;
-        }
-
-        public ObservableCollection<ÜrünItem> GetItems(int numberOfItem)
-        {
-            ObservableCollection<ÜrünItem> Items = new ObservableCollection<ÜrünItem>();
-            foreach(var Item in RestAPI.GetProducts())
-            {
-                ÜrünItem ürünItem = new ÜrünItem()
-                {
-                    ImageSource = Item.ImageUrl,
-                    Ürünİsmi = Item.Name,
-                    ÜrünDetayı = Item.Info,
-                    ÜrünFiyatı = Item.Cost.ToString()
-                };
-                Items.Add(ürünItem);
-                if(Items.Count == numberOfItem)
-                {
+                    Ürün = item;
                     break;
                 }
             }
-            return Items;
+            return Ürün;
         }
-
-        public ObservableCollection<ÜrünItem> GetAllItems()
+        public Product FindÜrünItemWithId(string Id)
         {
-            ObservableCollection<ÜrünItem> Items = new ObservableCollection<ÜrünItem>();
-            foreach (var Item in RestAPI.GetProducts())
+            Product Ürün = new Product();
+            foreach (Product item in Products)
             {
-                ÜrünItem ürünItem = new ÜrünItem()
+                if (Id == item.Id.ToString())
                 {
-                    ImageSource = Item.ImageUrl,
-                    Ürünİsmi = Item.Name,
-                    ÜrünDetayı = Item.Info,
-                    ÜrünFiyatı = Item.Cost.ToString()
-                };
-                Items.Add(ürünItem);
-                
-            }
-            return Items;
-        }
-        
-
-       /* private ObservableCollection<ÜrünItem> _items = new ObservableCollection<ÜrünItem>();
-        public ObservableCollection<ÜrünItem> Items
-        {
-            get
-            {
-                return _items;
-            }
-            set
-            {
-                if (_items != value)
-                {
-                    _items = value;
-                    OnPropertyChanged(nameof(Items));
+                    Ürün = item;
+                    break;
                 }
             }
-        }*/
-
-        public Command ItemTappedCommand
+            return Ürün;
+        }
+        public List<Product> GetItems(int numberOfItem)
         {
-            get
+            List<Product> Items = new List<Product>();
+            foreach (Product item in Products)
             {
-                return new Command((data) =>
+                Items.Add(item);
+                if (Items.Count == numberOfItem)
                 {
-                    Page.DisplayAlert("FlowListView", data + "", "Ok");
-                });
+                    break;
+                }
+
             }
+
+            return Items;
+        }
+        public List<Product> GetAllItemsNonCallApi()
+        {
+            return Products;
+        }
+        public List<Product> GetAllItems()
+        {
+
+            return RestAPI.GetProducts();
+        }
+        public List<Product> GetProductsWithDetailWord(string word)
+        {
+            List<Product> Ürünler = new List<Product>();
+            foreach (var item in Products)
+            {
+                if (item.Info.ToLower().Contains(word.ToLower()))
+                {
+                    Ürünler.Add(item);
+                }
+            }
+            return Ürünler;
+        }
+
+        public List<Product> FiyataGöreFiltrele(string minimum, string maksimum)
+        {
+            int min = 0;
+            int max = 0;
+            if (string.IsNullOrWhiteSpace(minimum))
+            {
+                min = 0;
+            }
+            else min = Convert.ToInt32(minimum);
+            if (string.IsNullOrWhiteSpace(maksimum))
+            {
+                max = 100000;
+            }
+            else max = Convert.ToInt32(maksimum);
+
+            var products = GetAllItemsNonCallApi();
+            products = products.Where(c => c.Cost >= min).ToList();
+            products = products.Where(c => c.Cost <= max).ToList();
+            return products;
+        }
+        public List<Product> Arama(string word)
+        {
+            string[] substrings = word.Split(' ');
+            if (string.IsNullOrWhiteSpace(word))
+                return null;
+            else
+            {
+                var products = GetAllItemsNonCallApi();
+                foreach (var item in substrings)
+                {
+                    products = products.Where(c => c.Info.ToLower().Contains(item.ToLower())).ToList();
+                }
+                return products;
+            }
+
         }
     }
 }

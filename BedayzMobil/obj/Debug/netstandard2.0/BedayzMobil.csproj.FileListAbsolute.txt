@@ -17,5 +17,9 @@ C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\bin\Debug\netstandard2.0\Bed
 C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\bin\Debug\netstandard2.0\ref\BedayzMobil.dll
 C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\bin\Debug\netstandard2.0\BedayzMobil.pdb
 C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\Views\Hoodie.xaml.g.cs
+C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\Views\ÜrünSayfasi.xaml.g.cs
+C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\Views\Giris.xaml.g.cs
+C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\Views\Hesabım.xaml.g.cs
 C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\BedayzMobil.csproj.CoreCompileInputs.cache
+C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\Views\UyeOl.xaml.g.cs
 C:\Users\Bengu\source\repos\BedayzMobil\BedayzMobil\obj\Debug\netstandard2.0\XamlC.stamp

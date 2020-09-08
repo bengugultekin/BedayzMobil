@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Settings = BedayzMobil.Helpers.Settings;
+using BedayzMobil.Helpers;
 
 namespace BedayzMobil.Views
 {
@@ -27,15 +29,25 @@ namespace BedayzMobil.Views
 
             ListViewMenu.ItemsSource = menuItems;
 
-            ListViewMenu.SelectedItem = menuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if (e.SelectedItem == null)
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                ((ListView)sender).SelectedItem = null;
                 await RootPage.NavigateFromMenu(id);
             };
+        }
+
+        private async void ÜyeOlButton_Clicked(object sender, EventArgs e)
+        {
+            await RootPage.NavigateFromMenu(Convert.ToInt32(MenuItemType.ÜyeGirisi));
+        }
+
+        private async void Hesabım_Clicked(object sender, EventArgs e)
+        {
+            await RootPage.NavigateFromMenu(Convert.ToInt32(MenuItemType.Hesabım));
         }
     }
 }

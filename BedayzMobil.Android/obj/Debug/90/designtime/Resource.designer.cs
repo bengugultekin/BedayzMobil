@@ -8357,7 +8357,10 @@ namespace BedayzMobil.Droid
 			public const int tooltip_frame_light = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int xamarin_logo = 2131165296;
+			public const int user = 2131165296;
+			
+			// aapt resource value: 0x7F070071
+			public const int xamarin_logo = 2131165297;
 			
 			static Drawable()
 			{

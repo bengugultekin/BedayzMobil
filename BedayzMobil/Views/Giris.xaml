@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Üye Girişi"
+             x:Class="BedayzMobil.Views.Giris">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry BackgroundColor="#F5F5F5" Placeholder="E-MAIL" x:Name="Email" Margin="5,10" />
+            <Entry BackgroundColor="#F5F5F5" Placeholder="ŞİFRE" IsPassword="True" x:Name="Sifre" Margin="5,-10" />
+            <Label Text="ŞİFREMİ UNUTTUM" TextDecorations="Underline" Margin="25,20,5,5" ></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="#2199E8" Text="ÜYE OL" TextColor="White" x:Name="KayıtOl" CornerRadius="15" HorizontalOptions="CenterAndExpand" WidthRequest="190" Margin="5,5,0,0" Clicked="KayıtOl_Clicked" ></Button>
+                <Button BackgroundColor="#2199E8" Text="GİRİŞ YAP" TextColor="White" x:Name="GirisYap" CornerRadius="15" HorizontalOptions="CenterAndExpand" WidthRequest="190" Margin="-10,5,0,0" Clicked="GirisYap_Clicked" ></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -36,8 +36,11 @@ namespace BedayzMobil.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.Hoodie:
-                        MenuPages.Add(id, new NavigationPage(new Hoodie()));
+                    case (int)MenuItemType.ÜyeGirisi:
+                        MenuPages.Add(id, new NavigationPage(new Giris()));
+                        break;
+                    case (int)MenuItemType.Hesabım:
+                        MenuPages.Add(id, new NavigationPage(new Hesabım()));
                         break;
                 }
             }
@@ -53,6 +56,28 @@ namespace BedayzMobil.Views
 
                 IsPresented = false;
             }
+
         }
+
+        public void NavigateTo(ContentPage TargetPage)
+        {
+            this.Master = TargetPage;
+            //this.Title = TargetPage.Title;
+            //this.IsPresented = false;
+        }
+       /* public async void PushPage(MenuItemType menuItemType, ContentPage page)
+        {
+            if (menuItemType == MenuItemType.ÇıkışYap)
+            {
+                await ((NavigationPage)((MasterDetailPage)Application.Current.MainPage).Detail).CurrentPage.Navigation.PopAsync();
+            }
+            else
+                await ((NavigationPage)((MasterDetailPage)Application.Current.MainPage).Detail).CurrentPage.Navigation.PushAsync(page);
+
+            if (Device.RuntimePlatform == Device.Android)
+                await Task.Delay(100);
+
+            IsPresented = false;
+        }*/
     }
 }

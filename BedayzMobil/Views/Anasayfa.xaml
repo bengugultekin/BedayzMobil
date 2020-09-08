@@ -31,23 +31,33 @@
                     </StackLayout>
                 </StackLayout>
 
-                <StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand">
                     <Label Text="Öne Çıkan Ürünler" Margin="5"/>
                     <flv:FlowListView FlowColumnCount="2"
                                   SeparatorVisibility="Default"
                                   HasUnevenRows="True"
                                   FlowItemTapped="ÜrünTapped"
+                                      HeightRequest="1250"
+                                      RowHeight="250"
                                   FlowItemsSource="{Binding Items}"
                                       x:Name="ÖneÇıkanÜrünlerFLV"
                                       >
                         <flv:FlowListView.FlowColumnTemplate>
                             <DataTemplate>
-                                <Frame BackgroundColor="White" Margin="5">
-                                    <StackLayout>
-                                        <Image Source="{Binding ImageSource}"/>
-                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding Ürünİsmi}"/>
+                                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="0">
+                                    <StackLayout Spacing="1">
+                                        <Image Source="{Binding ImageSource}" HeightRequest="150"/>
+                                        <Label HorizontalOptions="Fill" TextColor="DarkGray" XAlign="Center" YAlign="Center" Text="{Binding Ürünİsmi}"/>
                                         <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünDetayı}"/>
-                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünFiyatı}"/>
+                                        <Label HorizontalOptions="Fill" XAlign="Center" YAlign="Center" Text="{Binding ÜrünFiyatı}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="₺" FontSize="Medium" FontAttributes="Bold"/>
+                                                    <Span FontSize="Large" Text="{Binding Converter={StaticResource CostToString}}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        
                                     </StackLayout>
                                 </Frame>
                             </DataTemplate>

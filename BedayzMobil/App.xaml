@@ -8,6 +8,7 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#000000</Color>
             <Style TargetType="NavigationPage">

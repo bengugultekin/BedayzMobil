@@ -4575,7 +4575,8 @@ public final class R {
     public static final int notify_panel_notification_icon_bg=0x7f070073;
     public static final int tooltip_frame_dark=0x7f070074;
     public static final int tooltip_frame_light=0x7f070075;
-    public static final int xamarin_logo=0x7f070076;
+    public static final int user=0x7f070076;
+    public static final int xamarin_logo=0x7f070077;
   }
   public static final class id {
     public static final int ALT=0x7f080000;
